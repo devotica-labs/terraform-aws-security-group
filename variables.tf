@@ -44,7 +44,7 @@ variable "vpc_id" {
 
 variable "ingress_rules" {
   description = "Map of inbound rules, keyed by your own descriptive rule name. Each entry must set exactly one of cidr_ipv4 / cidr_ipv6 / referenced_security_group_id / prefix_list_id. Empty by default — no inbound traffic is allowed until you add rules."
-  type        = map(object({
+  type = map(object({
     description                  = optional(string)
     from_port                    = number
     to_port                      = number
@@ -77,7 +77,7 @@ variable "ingress_rules" {
 
 variable "egress_rules" {
   description = "Map of outbound rules, keyed by your own descriptive rule name. Same shape and exactly-one-target constraint as ingress_rules. Empty by default — see create_default_egress_rule for the common 'allow all outbound' case."
-  type        = map(object({
+  type = map(object({
     description                  = optional(string)
     from_port                    = number
     to_port                      = number
