@@ -1,0 +1,31 @@
+# Dependabot keeps GitHub Action SHA pins and Terraform provider pins fresh.
+# Each PR is one upgrade — easy to review, one-click merge if CI is green.
+#
+# Per terraform-governance-tooling §5.4 — both ecosystems are required for
+# Tier-1 supply-chain hygiene.
+
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Asia/Kolkata
+    commit-message:
+      prefix: "chore(deps)"
+    labels: [dependencies, github-actions]
+    open-pull-requests-limit: 10
+
+  - package-ecosystem: terraform
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Asia/Kolkata
+    commit-message:
+      prefix: "chore(deps)"
+    labels: [dependencies, terraform]
+    open-pull-requests-limit: 5

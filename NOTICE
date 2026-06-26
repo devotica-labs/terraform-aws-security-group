@@ -1,0 +1,19 @@
+terraform-aws-security-group
+Copyright 2026 Devotica Labs
+
+This product includes software developed at Devotica Labs
+(https://github.com/devotica-labs).
+
+================================================================================
+
+This module is purpose-built for the Devotica Terraform module catalog and
+integrates with the central CI/policy stack at:
+
+  devotica-labs/terraform-shared-config
+  devotica-labs/terraform-policies
+  devotica-labs/terraform-bootstrap-template
+
+================================================================================
+
+Third-party components and their licenses are documented in CHANGELOG.md
+and inline where used.

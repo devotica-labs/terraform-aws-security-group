@@ -1,0 +1,40 @@
+# terraform-aws-security-group
+
+Reusable AWS security group module — explicit ingress/egress rules using
+the modern split-resource model, least-privilege by default, with an
+auditable opt-in for unrestricted egress.
+
+Part of the [Devotica Terraform module catalog](https://registry.terraform.io/modules/devotica-labs).
+
+[![CI](https://github.com/devotica-labs/terraform-aws-security-group/actions/workflows/ci.yml/badge.svg)](https://github.com/devotica-labs/terraform-aws-security-group/actions/workflows/ci.yml)
+[![Architecture](https://github.com/devotica-labs/terraform-aws-security-group/actions/workflows/architecture-diagram.yml/badge.svg)](https://github.com/devotica-labs/terraform-aws-security-group/actions/workflows/architecture-diagram.yml)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+
+## Architecture
+
+<!-- BEGIN_ARCH -->
+<!-- END_ARCH -->
+
+## Security defaults
+
+| Control | Default | Why |
+|---|---|---|
+| Ingress rules | None — empty map | True deny-all-inbound until you explicitly add rules. AWS adds no implicit inbound rule, so this default has no caveats. |
+| Egress rules | None — empty map | No Terraform-managed egress rules by default. **Caveat:** AWS's `CreateSecurityGroup` API still attaches its own implicit allow-all-outbound rule regardless of this setting — see the comment above `aws_vpc_security_group_egress_rule.allow_all` in `main.tf`. |
+| `create_default_egress_rule` | `false` | Wide-open egress requires explicit, auditable opt-in rather than being silent or implicit. |
+| Rule shape validation | Enforced at plan time | Each rule must set exactly one of `cidr_ipv4` / `cidr_ipv6` / `referenced_security_group_id` / `prefix_list_id` — matches the AWS API's own constraint, caught before `apply` instead of as a runtime error. |
+
+<!-- BEGIN_TF_DOCS -->
+<!-- END_TF_DOCS -->
+
+## Acknowledgements
+
+Governance stack:
+
+- CI: [`devotica-labs/terraform-shared-config`](https://github.com/devotica-labs/terraform-shared-config)
+- Policy: [`devotica-labs/terraform-policies`](https://github.com/devotica-labs/terraform-policies)
+- Bootstrap: [`devotica-labs/terraform-bootstrap-template`](https://github.com/devotica-labs/terraform-bootstrap-template)
+
+## License
+
+Apache-2.0 — see [LICENSE](LICENSE).
