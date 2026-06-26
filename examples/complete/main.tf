@@ -52,13 +52,6 @@ module "security_group" {
       ip_protocol = "tcp"
       cidr_ipv4   = "10.0.20.0/22"
     }
-    https_outbound = {
-      description = "HTTPS outbound for package registries and AWS APIs"
-      from_port   = 443
-      to_port     = 443
-      ip_protocol = "tcp"
-      cidr_ipv4   = "0.0.0.0/0"
-    }
   }
 
   # Deliberately false — this example shows least-privilege egress instead
