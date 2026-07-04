@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/devotica-labs/terraform-aws-security-group/compare/v0.1.0...v0.1.1) (2026-07-04)
+
+
+### Bug Fixes
+
+* remove provider.tf from module root — mock credentials break consumer OIDC auth ([77faa7d](https://github.com/devotica-labs/terraform-aws-security-group/commit/77faa7d3521c6fc702398ef6fd80206d123260f9))
+
 ## 0.1.0 (2026-06-26)
 
 
